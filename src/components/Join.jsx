@@ -3,7 +3,7 @@ import Title from "./Title";
 
 export default function Join() {
   return (
-    <div className="h-screen bg-[url('public/static/images/bg-join.png')] bg-no-repeat bg-cover">
+    <div className="h-screen bg-[url('./public/static/images/bg-join.png')] bg-no-repeat bg-cover">
       <div className="h-screen bg-black bg-opacity-50 ">
         <div className="max-w-screen-xl mx-auto flex flex-col items-сenter justify-center h-screen">
           <Title className="text-white">
