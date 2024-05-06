@@ -2,7 +2,7 @@ import Button from "./Button";
 
 export default function Hero() {
   return (
-    <div className="h-screen bg-[url('./public/static/images/hero.jpg')]">
+    <div className="h-screen bg-hero">
       <div className="h-screen backdrop-blur-sm bg-black bg-opacity-70 ">
         <div className="max-w-screen-xl mx-auto flex flex-col items-start justify-center h-screen">
           <div className="flex flex-col gap-2 mb-9">
