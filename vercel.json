@@ -1,6 +1,3 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }],
-  "name": "my-vercel-project",
-  "public": true,
-  "builds": [{ "src": "public/*", "use": "@vercel/static" }]
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
