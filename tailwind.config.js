@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        hero: "url('./public/static/Images/hero.jpg')",
-        join: "url('./public/static/Images/bg-join.png')",
+        hero: "url('public/hero.jpg')",
+        join: "url('public/bg-join.png')",
       },
       colors: {
         primary: {
