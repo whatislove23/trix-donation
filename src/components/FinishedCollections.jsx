@@ -3,16 +3,20 @@ import Title from "./Title";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 
-import style from "../components/FinishedCollections.module.css";
 import "swiper/swiper-bundle.css";
 import "swiper/css";
 import "swiper/css/pagination";
+import style from "../components/FinishedCollections.module.css";
 import CollectionCard from "./CollectionCard";
+
+import useScreenWidth from "../hooks/useScreenWidth";
 
 const tempdata = [
   {
-    title: "Project A",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    title:
+      "Project saddasdasdas daadasdasAProject saddasdasdas daadasdasAProject saddasdasdas daadasdasAProject saddasdasdas daadasdasAProject saddasdasdas daadasdasAProject saddasdasdas daadasdasAProject saddasdasdas daadasdasA",
+    description:
+      "Lorem ipsum dolor sit amet,Project saddasdasdas daadasdasAProject saddasdasdas daadasdasAProject saddasdasdas daadasdasAProject saddasdasdas daadasdasAProject saddasdasdas daadasdasA consectetur adipiscing elit.",
     collected: 500,
     goal: 1000,
     id: 1,
@@ -52,14 +56,16 @@ const tempdata = [
 ];
 
 export default function FinishedCollections() {
+  let screenWidth = useScreenWidth();
   return (
-    <div id="finished" className="max-w-screen-xl mx-auto">
+    <div id="finished" className="mx-auto max-w-screen-xl">
       <Title>Завершені збори</Title>
-      <div className="mt-14">
+      <div className="mt-9 px-4 sm:mt-12 lg:mt-14">
         <Swiper
+          style={{ width: screenWidth - 50, maxWidth: 1280 }}
           loop={true}
-          slidesPerView={3}
-          spaceBetween={30}
+          slidesPerView={screenWidth < 370 ? 1 : screenWidth <= 575 ? 2 : 3}
+          spaceBetween={20}
           autoplay={{
             delay: 500,
             disableOnInteraction: false,

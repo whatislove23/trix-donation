@@ -4,32 +4,37 @@ import Button from "./Button";
 export default function CollectionCard(props) {
   const { title, description, collected, goal } = props;
   return (
-    <div className="rounded-[38px] p-7 border-2 border-bg-300 flex flex-col gap-5 min-w-[350px]">
-      <div className="w-full h-[300px] overflow-hidden rounded-lg object-cover">
+    <div className="flex  w-full flex-col gap-2 rounded-2xl border-2 border-bg-300  p-4 md:max-w-full md:gap-4  lg:max-w-[400px]  lg:gap-5 lg:rounded-[38px] lg:p-7">
+      <div className="h-32  w-full overflow-hidden rounded-lg object-cover lg:h-[300px]">
         <img
-          className="w-full h-full"
+          className="h-full w-full"
           src="https://suprotyv.com/wp-content/uploads/2023/02/DJI-Mavic-3.jpg"
           alt=""
         />
       </div>
-      <div className="flex flex-col gap-1">
-        <h3 className="font-semibold text-2xl text-text-100">{title}</h3>
-        <p className="text-text-200 font-semibold text-sm  line-clamp-4 overflow-hidden h-20">
+      <div className="flex flex-col gap-2">
+        <h3 className="line-clamp-4 h-[118px] text-xl font-semibold text-text-100 lg:h-[120px] lg:text-2xl">
+          {title}
+        </h3>
+        <p className="line-clamp-3 hidden h-[70px] text-base  font-semibold text-text-200 sm:block ">
           {description}
         </p>
       </div>
-      <div className="flex flex-col gap-2">
-        <div className="flex justify-between items-center">
-          <p className="text-text-100 font-semibold ">₴{collected}</p>
-          <p className="text-text-200 font-semibold "> ₴{goal}</p>
+      <div className="hidden md:block">
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center justify-between">
+            <p className="font-semibold text-text-100 ">₴{collected}</p>
+            <p className="font-semibold text-text-200 "> ₴{goal}</p>
+          </div>
+
+          <progress
+            className={pogressStyle.progress}
+            max={goal}
+            value={collected}
+          ></progress>
         </div>
-        <progress
-          className={pogressStyle.progress}
-          max={goal}
-          value={collected}
-        ></progress>
       </div>
-      <Button className="h-9  font-medium text-base px-6 py-2 max-w-min">
+      <Button className="h-9 w-full px-6 py-2  text-[16px] font-medium lg:max-w-min">
         Підтримати
       </Button>
     </div>

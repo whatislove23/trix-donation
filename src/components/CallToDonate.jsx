@@ -3,16 +3,24 @@ import Title from "./Title";
 
 export default function CallToDonate() {
   return (
-    <div className="max-w-screen-xl mx-auto flex flex-col items-center">
+    <div className="mx-auto flex max-w-screen-xl flex-col items-center p-4">
       <Title className="">
         <span className="text-primary-200">Донать</span> З trix donation
-        <br />
-        <span className="text-primary-200">
-          Зручно, ефективно, з нагадуванням
-        </span>
       </Title>
-      <Button className={"max-w-[400px] w-full mt-8"}>Підтримати</Button>
-      <a href="#" className="font-light text-text-200 mt-6">
+      <p className="mt-2 text-center  font-semibold uppercase text-primary-200 md:text-3xl lg:text-[40px]">
+        Зручно, ефективно, з нагадуванням
+      </p>
+      <Button
+        className={
+          " mt-5 w-full  max-w-64 md:max-w-72 lg:mt-8 lg:max-w-[400px]"
+        }
+      >
+        Підтримати
+      </Button>
+      <a
+        href="#"
+        className="mt-5 text-center font-light text-text-200 lg:mt-6 "
+      >
         Завантажуйте додаток Trix Donation і долучайтеся до добрих справ!
       </a>
     </div>

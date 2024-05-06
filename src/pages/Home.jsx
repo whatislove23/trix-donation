@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div className="flex flex-col gap-32 py-32">
-        <About id={"about"} />
+      <div className="flex flex-col  gap-20 py-20 md:gap-28  md:py-28 lg:gap-32 lg:py-32 ">
+        <About />
         <Stast />
         <FinishedCollections />
         <Join />
