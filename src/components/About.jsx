@@ -1,6 +1,16 @@
 import AboutCard from "./AboutCard";
 import Title from "./Title";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import swiperStyle from "./AboutSwiper.module.css";
+import "swiper/css";
+import "swiper/css/effect-cards";
+import { EffectCards } from "swiper/modules";
+
+import useScreenWidth from "../hooks/useScreenWidth";
+
 const aboutCards = [
   {
     id: 1,
@@ -41,17 +51,35 @@ const aboutCards = [
 ];
 
 function About() {
+  let screenWidth = useScreenWidth();
   return (
-    <div id="about" className="max-w-screen-xl mx-auto">
+    <div id="about" className="mx-auto max-w-screen-xl">
       <Title>
         <span className="text-primary-200">Trix Donation </span> – Платформа для
         легкого та надійного збору коштів!
       </Title>
-      <div className="grid grid-cols-3 gap-7 mt-14">
-        {aboutCards.map((element) => (
-          <AboutCard key={element.id} {...element} />
-        ))}
-      </div>
+      {screenWidth <= 768 ? (
+        <div className="mt-9 overflow-hidden">
+          <Swiper
+            effect={"cards"}
+            grabCursor={true}
+            modules={[EffectCards]}
+            className={swiperStyle.swiper}
+          >
+            {aboutCards.map((element) => (
+              <SwiperSlide key={element.id}>
+                <AboutCard {...element} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      ) : (
+        <div className="mt-14 grid gap-7 px-4 md:grid-cols-2 lg:grid-cols-3">
+          {aboutCards.map((element) => (
+            <AboutCard key={element.id} {...element} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

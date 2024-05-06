@@ -1,9 +1,9 @@
 import { HashLink } from "react-router-hash-link";
 export default function Header() {
   return (
-    <header className="top-0 sticky bg-gradient-to-r from-primary-100 to-accent-200 z-10">
-      <div className="max-w-screen-xl mx-auto py-2 flex justify-between items-center ">
-        <div className="flex items-center gap-9">
+    <header className="sticky top-0 z-10 bg-gradient-to-r from-primary-100 to-accent-200 px-4">
+      <div className="mx-auto flex max-w-screen-xl items-center justify-between py-2 ">
+        <div className="flex items-center md:gap-5">
           <HashLink smooth to={"/#home"}>
             <svg
               width="73"
@@ -32,34 +32,36 @@ export default function Header() {
               />
             </svg>
           </HashLink>
-          <HashLink
-            smooth
-            to={"/#about"}
-            className="text-text-200 text-xl  hover:text-text-100"
-          >
-            Про нас
-          </HashLink>
-          <HashLink
-            smooth
-            to="/#stats"
-            className="text-text-200 text-xl hover:text-text-100"
-          >
-            Досягнення
-          </HashLink>
-          <HashLink
-            smooth
-            to="/#finished"
-            className="text-text-200 text-xl hover:text-text-100"
-          >
-            Закриті потреби
-          </HashLink>
-          <HashLink
-            smooth
-            to="/#join"
-            className="text-text-200 text-xl hover:text-text-100"
-          >
-            Долучитись
-          </HashLink>
+          <div className="hidden md:flex md:gap-5">
+            <HashLink
+              smooth
+              to={"/#about"}
+              className="text-xl text-text-200  hover:text-text-100"
+            >
+              Про нас
+            </HashLink>
+            <HashLink
+              smooth
+              to="/#stats"
+              className="text-xl text-text-200 hover:text-text-100"
+            >
+              Досягнення
+            </HashLink>
+            <HashLink
+              smooth
+              to="/#finished"
+              className="text-xl text-text-200 hover:text-text-100"
+            >
+              Закриті потреби
+            </HashLink>
+            <HashLink
+              smooth
+              to="/#join"
+              className="text-xl text-text-200 hover:text-text-100"
+            >
+              Долучитись
+            </HashLink>
+          </div>
         </div>
         <svg
           width="48"
