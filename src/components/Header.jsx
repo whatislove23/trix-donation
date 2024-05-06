@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 export default function Header() {
   return (
-    <header className=" sticky bg-gradient-to-r from-primary-100 to-accent-200 ">
+    <header className="top-0 sticky bg-gradient-to-r from-primary-100 to-accent-200 z-10">
       <div className="max-w-screen-xl mx-auto py-2 flex justify-between items-center ">
         <div className="flex items-center gap-9">
-          <Link to={"/"}>
+          <HashLink smooth to={"/#home"}>
             <svg
               width="73"
               height="63"
@@ -31,22 +31,35 @@ export default function Header() {
                 fill="#132634"
               />
             </svg>
-          </Link>
-          <Link
-            to={"/about"}
+          </HashLink>
+          <HashLink
+            smooth
+            to={"/#about"}
             className="text-text-200 text-xl  hover:text-text-100"
           >
             Про нас
-          </Link>
-          <Link className="text-text-200 text-xl hover:text-text-100">
+          </HashLink>
+          <HashLink
+            smooth
+            to="/#stats"
+            className="text-text-200 text-xl hover:text-text-100"
+          >
             Досягнення
-          </Link>
-          <Link className="text-text-200 text-xl hover:text-text-100">
+          </HashLink>
+          <HashLink
+            smooth
+            to="/#finished"
+            className="text-text-200 text-xl hover:text-text-100"
+          >
             Закриті потреби
-          </Link>
-          <Link className="text-text-200 text-xl hover:text-text-100">
+          </HashLink>
+          <HashLink
+            smooth
+            to="/#join"
+            className="text-text-200 text-xl hover:text-text-100"
+          >
             Долучитись
-          </Link>
+          </HashLink>
         </div>
         <svg
           width="48"

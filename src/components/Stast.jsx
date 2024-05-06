@@ -1,7 +1,7 @@
 import AnimatedNumbers from "react-animated-numbers";
 export default function Stast() {
   return (
-    <div className="bg-gradient-to-r from-primary-100 to-accent-200 h-44 flex items-center">
+    <div id="stats" className="bg-gradient-to-r from-primary-100 to-accent-200 h-44 flex items-center">
       <div className="max-w-screen-xl mx-auto flex w-full justify-between">
         <div className="flex flex-col items-center">
           <AnimatedNumbers

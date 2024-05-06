@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
-
+import { HashLink } from "react-router-hash-link";
 export default function Footer() {
   return (
     <footer className="bg-bg-400 p-7">
       <div className="max-w-screen-xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-9">
-          <Link to="/">
+          <HashLink smooth to="/#home">
             <svg
               width="73"
               height="63"
@@ -32,22 +31,35 @@ export default function Footer() {
                 fill="white"
               />
             </svg>
-          </Link>
-          <Link
-            to={"/about"}
+          </HashLink>
+          <HashLink
+            to={"/#about"}
+            smooth
             className="text-bg-100 text-xl  hover:text-bg-200"
           >
             Про нас
-          </Link>
-          <Link className="text-bg-100 text-xl hover:text-bg-200">
+          </HashLink>
+          <HashLink
+            to="/#stats"
+            smooth
+            className="text-bg-100 text-xl hover:text-bg-200"
+          >
             Досягнення
-          </Link>
-          <Link className="text-bg-100 text-xl hover:text-bg-200">
+          </HashLink>
+          <HashLink
+            to="/#finished"
+            smooth
+            className="text-bg-100 text-xl hover:text-bg-200"
+          >
             Закриті потреби
-          </Link>
-          <Link className="text-bg-100 text-xl hover:text-bg-200">
+          </HashLink>
+          <HashLink
+            to="/#join"
+            smooth
+            className="text-bg-100 text-xl hover:text-bg-200"
+          >
             Долучитись
-          </Link>
+          </HashLink>
         </div>
         <div className="flex gap-4">
           <a href="">

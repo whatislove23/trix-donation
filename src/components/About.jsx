@@ -42,7 +42,7 @@ const aboutCards = [
 
 function About() {
   return (
-    <div  className="max-w-screen-xl mx-auto">
+    <div id="about" className="max-w-screen-xl mx-auto">
       <Title>
         <span className="text-primary-200">Trix Donation </span> – Платформа для
         легкого та надійного збору коштів!

@@ -53,7 +53,7 @@ const tempdata = [
 
 export default function FinishedCollections() {
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div id="finished" className="max-w-screen-xl mx-auto">
       <Title>Завершені збори</Title>
       <div className="mt-14">
         <Swiper
