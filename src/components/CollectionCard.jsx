@@ -34,7 +34,7 @@ export default function CollectionCard(props) {
           ></progress>
         </div>
       </div>
-      <Button className="h-9 w-full px-6 py-2  text-[16px] font-medium lg:max-w-min">
+      <Button className=" h-9 w-full px-6 py-2  font-medium  lg:max-w-min">
         Підтримати
       </Button>
     </div>

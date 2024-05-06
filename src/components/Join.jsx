@@ -25,7 +25,7 @@ export default function Join() {
               className=""
               loop={true}
               slidesPerView={screenWidth >= 575 ? 2 : 1}
-              spaceBetween={20}
+              spaceBetween={55}
               pagination={{
                 clickable: true,
               }}
@@ -73,7 +73,7 @@ export default function Join() {
               </SwiperSlide>
             </Swiper>
           </div>
-          <Button className="mt-14  w-full max-w-64 self-center bg-white md:max-w-72 lg:max-w-[400px]">
+          <Button className="  mt-14 w-full  max-w-64 self-center bg-white text-xl md:max-w-72 lg:max-w-[400px]">
             Долучитись
           </Button>
         </div>

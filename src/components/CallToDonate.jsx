@@ -12,7 +12,7 @@ export default function CallToDonate() {
       </p>
       <Button
         className={
-          " mt-5 w-full  max-w-64 md:max-w-72 lg:mt-8 lg:max-w-[400px]"
+          " mt-5 w-full  max-w-64 text-xl md:max-w-72 lg:mt-8 lg:max-w-[400px]"
         }
       >
         Підтримати

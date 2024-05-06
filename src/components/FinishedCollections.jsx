@@ -6,7 +6,7 @@ import { Pagination } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import "swiper/css";
 import "swiper/css/pagination";
-import style from "../components/FinishedCollections.module.css";
+
 import CollectionCard from "./CollectionCard";
 
 import useScreenWidth from "../hooks/useScreenWidth";
@@ -64,7 +64,7 @@ export default function FinishedCollections() {
         <Swiper
           style={{ width: screenWidth - 50, maxWidth: 1280 }}
           loop={true}
-          slidesPerView={screenWidth < 370 ? 1 : screenWidth <= 575 ? 2 : 3}
+          slidesPerView={screenWidth < 370 ? 1 : screenWidth <= 640 ? 2 : 3}
           spaceBetween={20}
           autoplay={{
             delay: 500,
@@ -74,7 +74,6 @@ export default function FinishedCollections() {
             clickable: true,
           }}
           modules={[Pagination]}
-          className={style.swiper}
         >
           {tempdata.map((element) => (
             <SwiperSlide key={element.id}>

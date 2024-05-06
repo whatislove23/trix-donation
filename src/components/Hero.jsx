@@ -14,7 +14,7 @@ export default function Hero() {
               джерел на благодійні цілі
             </p>
           </div>
-          <Button className="h-16 w-64 md:w-80 ">Підтримати</Button>
+          <Button className=" h-16 w-64 text-xl md:w-80 ">Підтримати</Button>
         </div>
       </div>
     </div>
