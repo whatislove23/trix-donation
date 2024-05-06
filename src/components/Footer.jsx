@@ -1,9 +1,11 @@
 import { HashLink } from "react-router-hash-link";
 import useScreenWidth from "../hooks/useScreenWidth";
+import { useLocation } from "react-router-dom";
 export default function Footer() {
   let screenWidth = useScreenWidth();
+  const location = useLocation();
   return (
-    <footer className="bg-bg-400 p-2 lg:p-7">
+    <footer className="mt-auto bg-bg-400 p-2 lg:p-7">
       <div className="mx-auto flex max-w-screen-xl items-center justify-between">
         <div className="flex items-center gap-5">
           <HashLink smooth to="/#home">
@@ -34,36 +36,38 @@ export default function Footer() {
               />
             </svg>
           </HashLink>
-          <div className="hidden flex-col  items-center sm:items-start sm:gap-2 md:flex lg:gap-5 min-[1130px]:flex-row">
-            <HashLink
-              to={"/#about"}
-              smooth
-              className="min-w-min text-xl  text-bg-100 hover:text-bg-200"
-            >
-              Про нас
-            </HashLink>
-            <HashLink
-              to="/#stats"
-              smooth
-              className="min-w-min text-xl text-bg-100 hover:text-bg-200"
-            >
-              Досягнення
-            </HashLink>
-            <HashLink
-              to="/#finished"
-              smooth
-              className="min-w-min text-xl text-bg-100 hover:text-bg-200"
-            >
-              Закриті потреби
-            </HashLink>
-            <HashLink
-              to="/#join"
-              smooth
-              className=" min-w-min text-xl text-bg-100 hover:text-bg-200"
-            >
-              Долучитись
-            </HashLink>
-          </div>
+          {location.pathname === "/" && (
+            <div className="hidden flex-col  items-center sm:items-start sm:gap-2 md:flex lg:gap-5 min-[1130px]:flex-row">
+              <HashLink
+                to={"/#about"}
+                smooth
+                className="min-w-min text-xl  text-bg-100 hover:text-bg-200"
+              >
+                Про нас
+              </HashLink>
+              <HashLink
+                to="/#stats"
+                smooth
+                className="min-w-min text-xl text-bg-100 hover:text-bg-200"
+              >
+                Досягнення
+              </HashLink>
+              <HashLink
+                to="/#finished"
+                smooth
+                className="min-w-min text-xl text-bg-100 hover:text-bg-200"
+              >
+                Закриті потреби
+              </HashLink>
+              <HashLink
+                to="/#join"
+                smooth
+                className=" min-w-min text-xl text-bg-100 hover:text-bg-200"
+              >
+                Долучитись
+              </HashLink>
+            </div>
+          )}
         </div>
         <div className=" flex  flex-col md:gap-4 min-[1130px]:flex-row">
           <a href="">

@@ -73,7 +73,11 @@ export default function Join() {
               </SwiperSlide>
             </Swiper>
           </div>
-          <Button className="  mt-14 w-full  max-w-64 self-center bg-white text-xl md:max-w-72 lg:max-w-[400px]">
+
+          <Button
+            to="/register"
+            className="  mt-14 w-full  max-w-64 self-center bg-white text-xl md:max-w-72 lg:max-w-[400px]"
+          >
             Долучитись
           </Button>
         </div>
