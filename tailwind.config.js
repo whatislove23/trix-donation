@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        custom: "350px", // Define your custom breakpoint here
+      },
       backgroundImage: {
         hero: "url('/hero.jpg')",
         join: "url('/bg-join.png')",
