@@ -1,3 +1,4 @@
+/* General progress styles */
 progress {
   width: 100%;
   height: 12px;
@@ -20,6 +21,12 @@ progress::-webkit-progress-value {
 
 /* Style the progress bar for Mozilla Firefox */
 progress::-moz-progress-bar {
+  background-color: #ffb300; /* Blue color for filled part */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Style the progress bar for Microsoft Edge and IE */
+progress::-ms-fill {
   background-color: #ffb300; /* Blue color for filled part */
   border-radius: 10px; /* Rounded corners */
 }
