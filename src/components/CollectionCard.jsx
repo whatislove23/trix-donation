@@ -1,5 +1,5 @@
-import pogressStyle from "../components/Progres.module.css";
 import Button from "./Button";
+import ProgressBar from "@ramonak/react-progress-bar";
 
 export default function CollectionCard(props) {
   const { title, description, collected, goal } = props;
@@ -27,11 +27,12 @@ export default function CollectionCard(props) {
             <p className="font-semibold text-text-200 "> ₴{goal}</p>
           </div>
 
-          <progress
-            className={pogressStyle.progress}
-            max={goal}
-            value={collected}
-          ></progress>
+          <ProgressBar
+            completed={(collected / goal) * 100}
+            bgColor="#ffb300"
+            isLabelVisible={false}
+            height="12px"
+          />
         </div>
       </div>
       <Button className=" h-9 w-full px-6 py-2  font-medium  lg:max-w-min">
