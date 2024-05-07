@@ -30,3 +30,9 @@ progress::-ms-fill {
   background-color: #ffb300; /* Blue color for filled part */
   border-radius: 10px; /* Rounded corners */
 }
+
+/* Style the progress bar for Safari */
+progress::-webkit-progress-value {
+  background-color: #ffb300; /* Blue color for filled part */
+  border-radius: 10px; /* Rounded corners */
+}
