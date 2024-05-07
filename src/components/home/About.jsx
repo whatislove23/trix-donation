@@ -1,5 +1,5 @@
-import AboutCard from "./AboutCard";
-import Title from "./Title";
+import AboutCard from "../AboutCard";
+import Title from "../Title";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 import { EffectCards } from "swiper/modules";
 
-import useScreenWidth from "../hooks/useScreenWidth";
+import useScreenWidth from "../../hooks/useScreenWidth";
 
 const aboutCards = [
   {

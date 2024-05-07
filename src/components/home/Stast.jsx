@@ -1,4 +1,4 @@
-import useScreenWidth from "../hooks/useScreenWidth";
+import useScreenWidth from "../../hooks/useScreenWidth";
 import StatsItem from "./StatsItem";
 export default function Stast() {
   let screenWidth = useScreenWidth();

@@ -1,19 +1,15 @@
-import { useLocation } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
-import Menu from "./Menu";
-import { useState } from "react";
-export default function Header() {
-  const location = useLocation();
-  const [isMenuOpen, setMenuOpen] = useState(false);
+import useScreenWidth from "../hooks/useScreenWidth";
+
+export default function AuthTemplate({ children }) {
+  let screenWidth = useScreenWidth();
   return (
-    <header className="sticky top-0 z-10 bg-gradient-to-r from-primary-100 to-accent-200 px-4">
-      {isMenuOpen && <Menu isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />}
-      <div className="mx-auto flex max-w-screen-xl items-center justify-between py-2 ">
-        <div className="flex items-center md:gap-5">
-          <HashLink smooth to={"/#home"}>
+    <div className="flex-1 p-4">
+      <div className="mx-auto my-20  flex max-h-[700px]  max-w-[1060px] overflow-hidden rounded-2xl border-2 border-bg-300">
+        {screenWidth >= 650 && (
+          <div className="flex w-full max-w-[531px] flex-col items-center justify-center bg-gradient-to-r from-primary-100 to-accent-200">
             <svg
-              width="73"
-              height="63"
+              width={screenWidth >= 1025 ? 300 : 150}
+              height={screenWidth >= 1025 ? 260 : 132}
               viewBox="0 0 301 261"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -37,55 +33,16 @@ export default function Header() {
                 fill="#132634"
               />
             </svg>
-          </HashLink>
-          {location.pathname === "/" && (
-            <div className="hidden md:flex md:gap-5">
-              <HashLink
-                smooth
-                to={"/#about"}
-                className="text-xl text-text-200  hover:text-text-100"
-              >
-                Про нас
-              </HashLink>
-              <HashLink
-                smooth
-                to="/#stats"
-                className="text-xl text-text-200 hover:text-text-100"
-              >
-                Досягнення
-              </HashLink>
-              <HashLink
-                smooth
-                to="/#finished"
-                className="text-xl text-text-200 hover:text-text-100"
-              >
-                Закриті потреби
-              </HashLink>
-              <HashLink
-                smooth
-                to="/#join"
-                className="text-xl text-text-200 hover:text-text-100"
-              >
-                Долучитись
-              </HashLink>
-            </div>
-          )}
-        </div>
-        <svg
-          className="cursor-pointer"
-          onClick={() => setMenuOpen(true)}
-          width="48"
-          height="48"
-          viewBox="0 0 48 48"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M8 36C6.89543 36 6 35.1046 6 34C6 32.8954 6.89543 32 8 32H40C41.1046 32 42 32.8954 42 34C42 35.1046 41.1046 36 40 36H8ZM8 26C6.89543 26 6 25.1046 6 24C6 22.8954 6.89543 22 8 22H40C41.1046 22 42 22.8954 42 24C42 25.1046 41.1046 26 40 26H8ZM8 16C6.89543 16 6 15.1046 6 14C6 12.8954 6.89543 12 8 12H40C41.1046 12 42 12.8954 42 14C42 15.1046 41.1046 16 40 16H8Z"
-            fill="#5C5C5C"
-          />
-        </svg>
+            <h3 className=" mt-5 font-semibold uppercase text-text-100 sm:text-3xl lg:text-4xl">
+              trix donation
+            </h3>
+            <p className=" text-xl text-text-200 min-[700px]:text-2xl lg:mt-2">
+              Час робити добрі справи
+            </p>
+          </div>
+        )}
+        <div className="w-full p-5 sm:my-24 lg:my-32">{children}</div>
       </div>
-    </header>
+    </div>
   );
 }

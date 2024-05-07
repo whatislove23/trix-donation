@@ -1,5 +1,5 @@
-import Button from "./Button";
-import Title from "./Title";
+import Button from "../Button";
+import Title from "../Title";
 import { Pagination } from "swiper/modules";
 
 import "swiper/swiper-bundle.css";
@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 
 import { SwiperSlide, Swiper } from "swiper/react";
 
-import useScreenWidth from "../hooks/useScreenWidth";
+import useScreenWidth from "../../hooks/useScreenWidth";
 
 export default function Join() {
   let screenWidth = useScreenWidth();
@@ -73,7 +73,11 @@ export default function Join() {
               </SwiperSlide>
             </Swiper>
           </div>
-          <Button className="  mt-14 w-full  max-w-64 self-center bg-white text-xl md:max-w-72 lg:max-w-[400px]">
+
+          <Button
+            to="/register"
+            className="  mt-14 w-full  max-w-64 self-center bg-white text-xl md:max-w-72 lg:max-w-[400px]"
+          >
             Долучитись
           </Button>
         </div>

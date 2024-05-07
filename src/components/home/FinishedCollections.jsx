@@ -1,4 +1,4 @@
-import Title from "./Title";
+import Title from "../Title";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
@@ -7,9 +7,9 @@ import "swiper/swiper-bundle.css";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import CollectionCard from "./CollectionCard";
+import CollectionCard from "../CollectionCard";
 
-import useScreenWidth from "../hooks/useScreenWidth";
+import useScreenWidth from "../../hooks/useScreenWidth";
 
 const tempdata = [
   {

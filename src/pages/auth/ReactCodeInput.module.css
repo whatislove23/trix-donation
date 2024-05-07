@@ -1,0 +1,25 @@
+.codeInput {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 364px;
+}
+.codeInput input {
+  display: inline-block;
+  border: 2px solid #cccccc;
+  width: 44px;
+  height: 56px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 24px;
+  padding: 16px 12px;
+  color: #333333;
+}
+
+@media screen and (max-width: 340px) {
+  .codeInput input {
+    width: 35px;
+    padding: 5px;
+  }
+}
