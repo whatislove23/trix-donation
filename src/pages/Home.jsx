@@ -1,9 +1,9 @@
-import About from "../components/About";
-import CallToDonate from "../components/CallToDonate.jsx";
-import FinishedCollections from "../components/FinishedCollections.jsx";
-import Hero from "../components/Hero";
-import Join from "../components/Join.jsx";
-import Stast from "../components/Stast";
+import About from "../components/home/About.jsx";
+import CallToDonate from "../components/home/CallToDonate.jsx";
+import FinishedCollections from "../components/home/FinishedCollections.jsx";
+import Hero from "../components/home/Hero.jsx";
+import Join from "../components/home/Join.jsx";
+import Stast from "../components/home/Stast.jsx";
 
 export default function Home() {
   return (

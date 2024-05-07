@@ -1,10 +1,13 @@
 import { useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import Menu from "./Menu";
+import { useState } from "react";
 export default function Header() {
   const location = useLocation();
-
+  const [isMenuOpen, setMenuOpen] = useState(false);
   return (
     <header className="sticky top-0 z-10 bg-gradient-to-r from-primary-100 to-accent-200 px-4">
+      {isMenuOpen && <Menu isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />}
       <div className="mx-auto flex max-w-screen-xl items-center justify-between py-2 ">
         <div className="flex items-center md:gap-5">
           <HashLink smooth to={"/#home"}>
@@ -69,6 +72,8 @@ export default function Header() {
           )}
         </div>
         <svg
+          className="cursor-pointer"
+          onClick={() => setMenuOpen(true)}
           width="48"
           height="48"
           viewBox="0 0 48 48"

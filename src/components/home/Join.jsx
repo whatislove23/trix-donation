@@ -1,5 +1,5 @@
-import Button from "./Button";
-import Title from "./Title";
+import Button from "../Button";
+import Title from "../Title";
 import { Pagination } from "swiper/modules";
 
 import "swiper/swiper-bundle.css";
@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 
 import { SwiperSlide, Swiper } from "swiper/react";
 
-import useScreenWidth from "../hooks/useScreenWidth";
+import useScreenWidth from "../../hooks/useScreenWidth";
 
 export default function Join() {
   let screenWidth = useScreenWidth();
