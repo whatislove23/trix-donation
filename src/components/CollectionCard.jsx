@@ -31,6 +31,7 @@ export default function CollectionCard(props) {
             completed={(collected / goal) * 100}
             bgColor="#ffb300"
             isLabelVisible={false}
+            animateOnRender={true}
             height="12px"
           />
         </div>
