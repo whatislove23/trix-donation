@@ -10,7 +10,7 @@ export default function OrganisationCard() {
           className='h-full w-full'
         />
       </div>
-      <div className='mt-2 flex flex-col gap-2 px-4 pb-4'>
+      <div className='mt-2 flex flex-col items-center gap-2 px-4 pb-4'>
         <h3 className=' text-xl font-semibold text-text-100 '>Serhiy Prytula Foundation</h3>
         <Button className=' h-9 w-full px-6 py-2  font-medium  lg:max-w-min'>Переглянути</Button>
       </div>
