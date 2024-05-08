@@ -61,7 +61,8 @@ function About() {
             effect={'cards'}
             grabCursor={true}
             modules={[EffectCards]}
-            className={swiperStyle.swiper}>
+            className={swiperStyle.swiper}
+          >
             {aboutCards.map((element) => (
               <SwiperSlide key={element.id}>
                 <AboutCard {...element} />

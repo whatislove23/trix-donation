@@ -6,7 +6,7 @@ import SearchFilter from './SearchFilter';
 
 export default function CollectionsGrid() {
   return (
-    <div className='mx-auto w-full max-w-screen-xl p-4 min-[1281px]:p-0'>
+    <div className='mx-auto w-full max-w-screen-xl px-4 min-[1281px]:p-0'>
       <Title>Відкриті збори</Title>
       <SearchFilter />
       <div className='mt-5 sm:mt-7 lg:mt-9'>
