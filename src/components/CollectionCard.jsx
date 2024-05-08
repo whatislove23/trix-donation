@@ -29,7 +29,9 @@ export default function CollectionCard(props) {
           <Progress complelted={(collected / goal) * 100} />
         </div>
       </div>
-      <Button className=' h-9 w-full px-6 py-2  font-medium  lg:max-w-min'>Підтримати</Button>
+      <Button className=' h-9 w-full px-6 py-2  font-medium  lg:max-w-min' to={'/collections/1'}>
+        Підтримати
+      </Button>
     </div>
   );
 }

@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import ResetCode from './pages/auth/ResetCode';
 import Collections from './pages/Collections';
+import Collection from './pages/Collection';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route path='/collections' element={<Collections />} />
+        <Route path='/collections/:id' element={<Collection />} />
 
         <Route path='/register' element={<Register />} />
         <Route path='/auth' element={<Auth />} />
