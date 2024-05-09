@@ -1,4 +1,4 @@
-export default function Input({ type, placeholder, value, onChange }) {
+export default function Input({ type, placeholder, value, onChange, ...props }) {
   return (
     <input
       type={type}
@@ -6,6 +6,7 @@ export default function Input({ type, placeholder, value, onChange }) {
       value={value}
       onChange={onChange}
       className='w-full rounded-2xl border-2  border-bg-300 px-4 py-3 font-medium uppercase text-text-100 placeholder:text-xl placeholder:font-medium placeholder:uppercase'
+      {...props}
     />
   );
 }
