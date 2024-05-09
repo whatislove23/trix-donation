@@ -6,35 +6,54 @@ import AuthTemplate from '../../components/AuthTemplate';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import authValidate from '../../functions/authValidate';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [userName, setUserName] = useState('');
+  const navigate = useNavigate();
+
   const onEmailChange = (e) => setEmail(e.target.value);
   const onPasswordChange = (e) => setPassword(e.target.value);
-  const onUserNameChange = (e) => setUserName(e.target.value);
 
-  const submitForm = () => {
-    let errors = authValidate(userName, password, email);
-    for (let error in errors) {
-      toast.error(errors[error]);
+  const submitForm = async () => {
+    if (!authValidate(undefined, password, email)) return;
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE}/users/api/create/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+      const responseData = await response.json();
+      if (typeof responseData.email == 'string') {
+        navigate('/reset-code', { state: { email: responseData.email, forgotPassword: false } });
+        return toast.success('Користувача створено');
+      }
+      toast.error('Користувач з такою поштою вже існує');
+    } catch (error) {
+      toast.error(error.message);
     }
   };
+
   return (
     <AuthTemplate>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className='flex flex-col items-center justify-center gap-5'
-      >
+        className='flex flex-col items-center justify-center gap-5'>
         <Title>Реєєстрація</Title>
+
         <Input
-          placeholder={'Повне імʼя'}
-          type={'text'}
-          onChange={onUserNameChange}
-          value={userName}
+          placeholder={'E-mail'}
+          type={'email'}
+          onChange={onEmailChange}
+          value={email}
+          className='lowercase'
         />
-        <Input placeholder={'E-mail'} type={'email'} onChange={onEmailChange} value={email} />
         <Input
           placeholder={'Пароль'}
           type={'password'}

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+
 import Title from '../components/Title';
 import Progress from '../components/Progress';
 import ValueBtn from '../components/collection/ValueBtn';
 import Input from '../components/Input.jsx';
 import Button from '../components/Button';
-
 import PostForm from '../components/collection/PostForm.jsx';
 import Post from '../components/collection/Post.jsx';
 
@@ -47,7 +47,9 @@ export default function Collection() {
             <img
               className='h-full w-full'
               src='https://sunseeker-russia.com/uploads/2023/09/sunseeker-ext16.jpg'
-              alt=''
+
+              alt='Baner'
+
             />
           </div>
           <div className='mt-5 lg:max-w-[630px]'>
