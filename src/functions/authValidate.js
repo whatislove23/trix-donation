@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 const authValidate = (fullName, password, email, flag = false) => {
   const errors = {};
   if (fullName !== undefined) {
@@ -32,7 +33,11 @@ const authValidate = (fullName, password, email, flag = false) => {
       errors.email = 'Не валідна пошта';
     }
   }
-
-  return errors;
+  if (Object.keys(errors).length) {
+    for (let error in errors) {
+      toast.error(errors[error]);
+    }
+    return Object.keys(errors).length == 0;
+  }
 };
 export default authValidate;
