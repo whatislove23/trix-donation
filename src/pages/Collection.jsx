@@ -47,14 +47,16 @@ export default function Collection() {
             <img
               className='h-full w-full'
               src='https://sunseeker-russia.com/uploads/2023/09/sunseeker-ext16.jpg'
+
               alt='Baner'
+
             />
           </div>
           <div className='mt-5 lg:max-w-[630px]'>
             <Title>Збір на пікап</Title>
             <p className=' mt-4 text-xl text-text-200 sm:mt-5 lg:text-2xl'>
-              Щоб захисники якнайшвидше отримали машини, потрібна ваша допомога. Приєднуйтеся
-              до збору коштів та поширюйте інформацію про наш проєкт.
+              Щоб захисники якнайшвидше отримали машини, потрібна ваша допомога. Приєднуйтеся до
+              збору коштів та поширюйте інформацію про наш проєкт.
             </p>
             <div className=' my-4 flex items-center gap-1 text-xl font-semibold lg:text-2xl'>
               <p className=' text-text-100'>Організатор: </p>

@@ -7,12 +7,15 @@ import NewPassword from './pages/auth/NewPassword';
 import ForgotPassword from './pages/auth/ForgotPassword';
 
 import { ToastContainer } from 'react-toastify';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes,  } from 'react-router-dom';
 
-import 'react-toastify/dist/ReactToastify.css';
 import ResetCode from './pages/auth/ResetCode';
 import Collections from './pages/Collections';
 import Collection from './pages/Collection';
+import Dashboard from './pages/Dashboard/Dashboard';
+import DashboardProfile from './pages/Dashboard/DashboardProfile';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -22,6 +25,11 @@ function App() {
         <Route exact path='/' element={<Home />} />
         <Route path='/collections' element={<Collections />} />
         <Route path='/collections/:id' element={<Collection />} />
+
+        <Route path='/dashboard' element={<Dashboard />}>
+          <Route index element={<DashboardProfile />} />
+          <Route path='profile' element={<DashboardProfile />} />
+        </Route>
 
         <Route path='/register' element={<Register />} />
         <Route path='/auth' element={<Auth />} />
