@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+
 import Menu from './Menu';
-import { useState } from 'react';
+
 export default function Header() {
   const location = useLocation();
   const [isMenuOpen, setMenuOpen] = useState(false);

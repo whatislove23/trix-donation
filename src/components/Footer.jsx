@@ -1,6 +1,7 @@
 import { HashLink } from 'react-router-hash-link';
-import useScreenWidth from '../hooks/useScreenWidth';
 import { useLocation } from 'react-router-dom';
+import useScreenWidth from '../hooks/useScreenWidth';
+
 export default function Footer() {
   let screenWidth = useScreenWidth();
   const location = useLocation();
@@ -70,7 +71,7 @@ export default function Footer() {
           )}
         </div>
         <div className=' flex  flex-col md:gap-4 min-[1130px]:flex-row'>
-          <a href=''>
+          <a href='#'>
             <svg
               width={screenWidth <= 765 ? 100 : 200}
               height='47'
@@ -199,7 +200,7 @@ export default function Footer() {
               </defs>
             </svg>
           </a>
-          <a href=''>
+          <a href='#'>
             <svg
               width={screenWidth <= 765 ? 100 : 200}
               height='47'

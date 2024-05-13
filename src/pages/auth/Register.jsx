@@ -1,20 +1,22 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Title from '../../components/Title';
 import AuthTemplate from '../../components/AuthTemplate';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import authValidate from '../../functions/authValidate';
 import { useNavigate } from 'react-router-dom';
+import { ProfileContext } from '../../hooks/useContext';
 
 export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
-
   const onEmailChange = (e) => setEmail(e.target.value);
   const onPasswordChange = (e) => setPassword(e.target.value);
+
+  const navigate = useNavigate();
+  const { profile } = useContext(ProfileContext);
 
   const submitForm = async () => {
     if (!authValidate(undefined, password, email)) return;
@@ -39,12 +41,13 @@ export default function Register() {
       toast.error(error.message);
     }
   };
-
+  if (profile?.access_token) return <Navigate to='/dashboard' replace />;
   return (
     <AuthTemplate>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className='flex flex-col items-center justify-center gap-5'>
+        className='flex flex-col items-center justify-center gap-5'
+      >
         <Title>Реєєстрація</Title>
 
         <Input

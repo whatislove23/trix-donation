@@ -1,17 +1,17 @@
-import { useState } from 'react';
-
-export default function AddImage() {
-  const [img, setImage] = useState([]);
+export default function AddImage({ image, setImage, url, className, isEditable = true }) {
   const handleFileChange = (e) => {
     setImage(Array.from(e.target.files));
   };
+  const cardStyle = `justify-center  relative flex h-80 w-full max-w-80 items-center ` + className;
+
   return (
-    <div
-      className={`justify-center' relative flex h-80 w-full items-center  md:max-w-80  lg:max-w-[600px]`}>
-      <div className='flex  h-full w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg border-2 border-bg-300 bg-bg-200 object-cover'>
-        {img.length > 0 ? (
-          <img src={URL.createObjectURL(img[0])} alt='Profile pic' className='h-full w-full' />
-        ) : (
+    <div className={cardStyle}>
+      <div
+        className='flex  h-full w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg border-2 border-bg-300 bg-bg-200 bg-cover bg-center '
+        style={{
+          backgroundImage: `url('${image?.length > 0 ? URL.createObjectURL(image[0]) : url}')`,
+        }}>
+        {image?.length > 0 || url ? null : (
           <svg
             width='46'
             height='45'
@@ -29,6 +29,7 @@ export default function AddImage() {
         )}
       </div>
       <input
+        disabled={!isEditable}
         type='file'
         accept='image/*'
         className='absolute left-0 top-0 z-10 h-full w-full cursor-pointer opacity-0'

@@ -13,8 +13,9 @@ export default function ForgotPassword() {
   const onEmailChange = (e) => setEmail(e.target.value);
 
   const onSubmit = async () => {
-    if (!authValidate(undefined, undefined, email, true)) return;
-
+    if (!authValidate(undefined, undefined, email, true)) {
+      return;
+    }
     try {
       const response = await fetch(`${import.meta.env.VITE_API_BASE}/users/api/password_reset/`, {
         method: 'POST',
@@ -40,7 +41,8 @@ export default function ForgotPassword() {
     <AuthTemplate>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className='flex flex-col items-center justify-center gap-5'>
+        className='flex flex-col items-center justify-center gap-5'
+      >
         <Title>Забули пароль?</Title>
         <Input
           placeholder={'E-mail'}

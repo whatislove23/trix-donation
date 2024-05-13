@@ -37,7 +37,7 @@ const authValidate = (fullName, password, email, flag = false) => {
     for (let error in errors) {
       toast.error(errors[error]);
     }
-    return Object.keys(errors).length == 0;
   }
+  return Object.keys(errors).length == 0;
 };
 export default authValidate;

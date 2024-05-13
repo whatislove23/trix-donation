@@ -8,16 +8,39 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import useScreenWidth from '../../hooks/useScreenWidth';
-import tempdata from '../../temp/data';
+
+import { useEffect, useState } from 'react';
 
 export default function FinishedCollections() {
   let screenWidth = useScreenWidth();
+  const [slides, setSlides] = useState([]);
+
+  const getSlides = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE}/money_collections/api/?param=t`,
+      );
+      const data = await response.json();
+      if (!data.results.length) {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE}/money_collections/api/`);
+        const data = await response.json();
+        return setSlides(data.results);
+      }
+      setSlides(data.results);
+    } catch (e) {
+      console.error;
+    }
+  };
+
+  useEffect(() => {
+    getSlides();
+  }, []);
   return (
     <div id='finished' className='mx-auto w-full max-w-screen-xl'>
       <Title>Завершені збори</Title>
       <div className='mt-9 w-full px-4 sm:mt-12 lg:mt-14'>
         <Swiper
-          className='w-full'
+          className='w-full '
           loop={true}
           slidesPerView={screenWidth < 370 ? 1 : screenWidth <= 640 ? 2 : 3}
           spaceBetween={20}
@@ -31,7 +54,7 @@ export default function FinishedCollections() {
           }}
           modules={[Pagination, Autoplay]}
         >
-          {tempdata.map((element) => (
+          {slides.map((element) => (
             <SwiperSlide key={element.id}>
               <CollectionCard {...element} />
             </SwiperSlide>

@@ -16,7 +16,7 @@ export default function NewPassword() {
   const onSubmit = async () => {
     if (!authValidate(undefined, password, undefined, false)) return;
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE}/users/api/password_reset/`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE}/users/api/password_set/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +39,8 @@ export default function NewPassword() {
     <AuthTemplate>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className='flex flex-col items-center justify-center gap-5'>
+        className='flex flex-col items-center justify-center gap-5'
+      >
         <Title>Новий пароль</Title>
         <Input
           placeholder={'Новий пароль'}

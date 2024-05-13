@@ -1,7 +1,11 @@
-import { useEffect } from 'react';
-import MenuButton from './MenuButton';
+import { useContext, useEffect } from 'react';
+import { ProfileContext } from '../hooks/useContext';
+
+import NavBtn from './dashboard/NavBtn';
 
 export default function Menu({ isMenuOpen, setMenuOpen }) {
+  const { profile, setProfile } = useContext(ProfileContext);
+
   useEffect(() => {
     document.body.style = 'overflow:hidden';
     return () => (document.body.style = 'overflow:auto');
@@ -10,7 +14,7 @@ export default function Menu({ isMenuOpen, setMenuOpen }) {
   return (
     <div
       onClick={() => setMenuOpen(false)}
-      className=' absolute left-0 top-0  flex h-screen w-full cursor-pointer justify-end bg-bg-400 bg-opacity-40 backdrop-blur-sm'
+      className=' absolute left-0 top-0  z-30 flex h-screen w-full cursor-pointer justify-end bg-bg-400 bg-opacity-40 backdrop-blur-sm'
     >
       <svg
         className='absolute right-0 top-0'
@@ -61,12 +65,50 @@ export default function Menu({ isMenuOpen, setMenuOpen }) {
           </svg>
         </div>
         <div className='mt-5 flex w-full flex-1 flex-col items-center gap-4'>
-          <MenuButton>Профіль</MenuButton>
-          <MenuButton>Збори</MenuButton>
-          <MenuButton>Організації</MenuButton>
-          <MenuButton>Профіль</MenuButton>
+          <NavBtn
+            to='/dashboard/profile'
+            className={'max-w-56'}
+            onClick={() => {
+              setMenuOpen(false);
+            }}
+          >
+            Профіль
+          </NavBtn>
+          <NavBtn
+            to='/dashboard/organisation'
+            className={'max-w-56'}
+            onClick={() => {
+              setMenuOpen(false);
+            }}
+          >
+            Організація
+          </NavBtn>
+          <NavBtn
+            to='/dashboard/follows'
+            className={'max-w-56'}
+            onClick={() => {
+              setMenuOpen(false);
+            }}
+          >
+            Підписки
+          </NavBtn>
         </div>
-        <MenuButton className='mx-auto mt-auto'>Рєєстрація</MenuButton>
+        {profile?.access_token ? (
+          <NavBtn
+            to='/auth'
+            className={'max-w-56'}
+            onClick={() => {
+              setProfile({});
+              setMenuOpen(false);
+            }}
+          >
+            Вихід з аккаунту
+          </NavBtn>
+        ) : (
+          <NavBtn to='/auth' className={'max-w-56'}>
+            Авторизація
+          </NavBtn>
+        )}
       </div>
     </div>
   );

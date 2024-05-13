@@ -89,7 +89,8 @@ export default function ResetCode() {
     <AuthTemplate>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className='flex flex-col items-center justify-center gap-5'>
+        className='flex flex-col items-center justify-center gap-5'
+      >
         <div className='flex flex-col'>
           <Title>Введіть код</Title>
           <p className='mt-1 text-center font-semibold text-text-200'>

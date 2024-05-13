@@ -1,21 +1,84 @@
-import Input from '../Input.jsx';
-import Button from '../Button';
-import { Autoplay, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import { useState } from 'react';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 
-function PostForm() {
-  const [selectedFiles, setSelectedFiles] = useState([]);
+import { Autoplay, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { useContext, useState } from 'react';
 
+import Button from '../Button';
+import Input from '../Input.jsx';
+import { ProfileContext } from '../../hooks/useContext.jsx';
+import { toast } from 'react-toastify';
+
+function PostForm({ collection_id, setData }) {
+  const { profile } = useContext(ProfileContext);
+
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [spent, setSpent] = useState();
+  const [description, setDescription] = useState();
+  const [title, setTitle] = useState('');
+
+  const splitFiles = (files) => {
+    const videos = [];
+    const images = [];
+    files.forEach((file) => {
+      if (file.type.startsWith('video')) {
+        videos.push(file);
+      } else if (file.type.startsWith('image')) {
+        images.push(file);
+      }
+    });
+    return { videos, images };
+  };
   const handleFileChange = (event) => {
     setSelectedFiles(Array.from(event.target.files));
   };
+
+  const submitForm = () => {
+    const { videos, images } = splitFiles(selectedFiles);
+    const formData = new FormData();
+    formData.append('name', title);
+    formData.append('description', description);
+    formData.append('price', spent);
+    images.forEach((item) => formData.append('images', item));
+    videos.forEach((item) => formData.append('videos', item));
+
+    fetch(`${import.meta.env.VITE_API_BASE}/money_collections/api/${collection_id}/reports/`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${profile.access_token}`,
+      },
+      body: formData,
+    })
+      .then((response) => {
+        if (response.status === 413) {
+          toast.error('Файли завеликі');
+          throw new Error('Payload Too Large');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (typeof data.name == 'string') {
+          setData((prev) => [...prev, data]);
+          setSelectedFiles([]);
+          setSpent(0);
+          setDescription('');
+          setTitle('');
+          toast.success('Звіт додано');
+          return;
+        }
+        Object.keys(data).forEach((key) => {
+          const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+          toast.error(`${formattedKey} ${data[key][0]}`);
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   return (
     <div className='mt-9 rounded-xl border-2 border-bg-300  p-5 md:flex md:items-center md:gap-11'>
       <div className='w-full md:max-w-80 lg:max-w-[600px]'>
@@ -81,17 +144,23 @@ function PostForm() {
       <div className='mt-6 flex flex-col gap-2 text-text-100 md:w-full'>
         <div className='flex flex-col gap-1'>
           <p className='text-2xl font-semibold '>Заголовок</p>
-          <Input type={'text'} />
+          <Input type={'text'} value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
         <div className='flex flex-col gap-1'>
           <p className='text-2xl font-semibold'>Витрачена сума</p>
-          <Input type={'number'} />
+          <Input type={'number'} value={spent} onChange={(e) => setSpent(e.target.value)} />
         </div>
         <div className='flex flex-col gap-1'>
           <p className='text-2xl font-semibold'>Опис</p>
-          <textarea className='min-h-24 w-full rounded-2xl border-2  border-bg-300 px-4 py-3 font-medium uppercase text-text-100 placeholder:text-xl placeholder:font-medium placeholder:uppercase'></textarea>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className='min-h-24 w-full rounded-2xl border-2  border-bg-300 px-4 py-3 font-medium uppercase text-text-100 placeholder:text-xl placeholder:font-medium placeholder:uppercase'
+          ></textarea>
         </div>
-        <Button className={'lg:mt-5'}>Опублікувати</Button>
+        <Button className={'lg:mt-5'} onClick={submitForm}>
+          Опублікувати
+        </Button>
       </div>
     </div>
   );
