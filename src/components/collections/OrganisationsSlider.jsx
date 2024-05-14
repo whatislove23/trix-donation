@@ -7,10 +7,10 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useEffect, useState } from 'react';
 
+import LazyOrganizationCard from '../lazy/LazyOrganizationCard.jsx';
 import OrganisationCard from './OrganisationCard.jsx';
 import Title from '../Title';
 import useScreenWidth from '../../hooks/useScreenWidth';
-import LazyOrganizationCard from '../lazy/LazyOrganizationCard.jsx';
 
 export default function OrganisationsSlider() {
   const screenWidth = useScreenWidth();
@@ -22,10 +22,10 @@ export default function OrganisationsSlider() {
       .then(setOrganisations);
   }, []);
   return (
-    <div className='mx-auto w-full max-w-screen-xl p-4 min-[1281px]:p-0 '>
+    <div className='mx-auto w-full max-w-screen-xl '>
       <Title>Волонтери та організації</Title>
       <Swiper
-        className='mt-6 w-full sm:mt-9 lg:mt-14'
+        className='w-full px-2 pb-2 pt-6 sm:pt-9 lg:pt-14 '
         slidesPerView={
           screenWidth <= 350 ? 1 : screenWidth <= 640 ? 2 : screenWidth >= 1024 ? 4 : 3
         }
@@ -36,8 +36,7 @@ export default function OrganisationsSlider() {
           clickable: true,
           dynamicBullets: true,
         }}
-        modules={[Autoplay, Pagination]}
-      >
+        modules={[Autoplay, Pagination]}>
         {organisations.length <= 0
           ? [1, 2, 3, 4, 5].map((data) => (
               <SwiperSlide key={data}>

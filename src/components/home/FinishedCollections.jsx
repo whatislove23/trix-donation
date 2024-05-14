@@ -1,17 +1,15 @@
-import Title from '../Title';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
-import CollectionCard from '../CollectionCard';
-
 import 'swiper/swiper-bundle.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import useScreenWidth from '../../hooks/useScreenWidth';
-
+import { Autoplay, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { useEffect, useState } from 'react';
 
+import CollectionCard from '../CollectionCard';
 import LazyCollectionItem from '../lazy/LazyCollectionItem';
+import Title from '../Title';
+import useScreenWidth from '../../hooks/useScreenWidth';
 
 export default function FinishedCollections() {
   let screenWidth = useScreenWidth();
@@ -45,9 +43,9 @@ export default function FinishedCollections() {
     <div id='finished' className='mx-auto w-full max-w-screen-xl'>
       <Title>Завершені збори</Title>
 
-      <div className='mt-9 w-full px-4 sm:mt-12 lg:mt-14'>
+      <div className=' w-full  sm:mt-12 '>
         <Swiper
-          className='w-full '
+          className='w-full  px-4 pb-4 pt-9 lg:pt-14'
           loop={true}
           slidesPerView={screenWidth < 370 ? 1 : screenWidth <= 640 ? 2 : 3}
           spaceBetween={20}
