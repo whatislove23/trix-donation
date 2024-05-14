@@ -25,7 +25,7 @@ import Payment from './pages/Payment.jsx';
 function App() {
   return (
     <ProfileProvider>
-      <Router>
+      <Router basename='/trix-donation'>
         <Header />
         <Routes>
           <Route exact path='/' element={<Home />} />

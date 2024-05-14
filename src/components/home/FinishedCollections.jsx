@@ -21,10 +21,14 @@ export default function FinishedCollections() {
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_BASE}/money_collections/api/?param=t`,
+        {
+          cors: 'no-cors',
+          'Access-Control-Allow-Origin': '*',
+        },
       );
       const data = await response.json();
       if (!data.results.length) {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE}/money_collections/api/`);
+        const response = await fetch(`${import.meta.env.VITE_API_BASE}/money_collections/api/`, {});
         const data = await response.json();
         return setSlides(data.results);
       }
@@ -55,8 +59,7 @@ export default function FinishedCollections() {
             dynamicBullets: true,
             clickable: true,
           }}
-          modules={[Pagination, Autoplay]}
-        >
+          modules={[Pagination, Autoplay]}>
           {slides.length <= 0
             ? [1, 2, 3, 4].map((item) => (
                 <SwiperSlide key={item}>
