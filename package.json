@@ -3,14 +3,12 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://whatislove23.github.io/trix-donation",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "format": "npx prettier --write 'src/**/*.js' 'src/**/*.jsx'",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@ramonak/react-progress-bar": "^5.2.0",
@@ -37,7 +35,6 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
-    "gh-pages": "6.1.1",
     "postcss": "^8.4.38",
     "prettier": "3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
