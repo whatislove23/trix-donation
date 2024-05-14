@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import OrganisationCard from './OrganisationCard.jsx';
 import Title from '../Title';
 import useScreenWidth from '../../hooks/useScreenWidth';
+import LazyOrganizationCard from '../lazy/LazyOrganizationCard.jsx';
 
 export default function OrganisationsSlider() {
   const screenWidth = useScreenWidth();
@@ -35,12 +36,19 @@ export default function OrganisationsSlider() {
           clickable: true,
           dynamicBullets: true,
         }}
-        modules={[Autoplay, Pagination]}>
-        {organisations.map((data) => (
-          <SwiperSlide key={data.organization_id}>
-            <OrganisationCard {...data} />
-          </SwiperSlide>
-        ))}
+        modules={[Autoplay, Pagination]}
+      >
+        {organisations.length <= 0
+          ? [1, 2, 3, 4, 5].map((data) => (
+              <SwiperSlide key={data}>
+                <LazyOrganizationCard {...data} />
+              </SwiperSlide>
+            ))
+          : organisations.map((data) => (
+              <SwiperSlide key={data.organization_id}>
+                <OrganisationCard {...data} />
+              </SwiperSlide>
+            ))}
       </Swiper>
     </div>
   );

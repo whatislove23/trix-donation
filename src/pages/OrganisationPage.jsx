@@ -94,7 +94,7 @@ export default function OrganisationPage() {
   return (
     <>
       <div
-        className=' h-64 w-full overflow-hidden  bg-cover bg-center bg-no-repeat sm:h-72 lg:h-96'
+        className=' h-64 w-full overflow-hidden  bg-logobg bg-cover bg-center bg-no-repeat sm:h-72 lg:h-96'
         style={{ backgroundImage: `url('${data?.avatar}')` }}
       >
         <div className='relative h-64 w-full bg-black bg-opacity-70 backdrop-blur-sm sm:h-72 lg:h-96'>

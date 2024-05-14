@@ -19,7 +19,8 @@ export default function Post({ name, description, price, images, videos }) {
           clickable: true,
           dynamicBullets: true,
         }}
-        modules={[Autoplay, Pagination]}>
+        modules={[Autoplay, Pagination]}
+      >
         {images.map((file) => (
           <SwiperSlide key={file.id}>
             <div className=' h-full w-full overflow-hidden rounded-lg object-cover'>

@@ -11,6 +11,8 @@ import useScreenWidth from '../../hooks/useScreenWidth';
 
 import { useEffect, useState } from 'react';
 
+import LazyCollectionItem from '../lazy/LazyCollectionItem';
+
 export default function FinishedCollections() {
   let screenWidth = useScreenWidth();
   const [slides, setSlides] = useState([]);
@@ -38,6 +40,7 @@ export default function FinishedCollections() {
   return (
     <div id='finished' className='mx-auto w-full max-w-screen-xl'>
       <Title>Завершені збори</Title>
+
       <div className='mt-9 w-full px-4 sm:mt-12 lg:mt-14'>
         <Swiper
           className='w-full '
@@ -54,11 +57,17 @@ export default function FinishedCollections() {
           }}
           modules={[Pagination, Autoplay]}
         >
-          {slides.map((element) => (
-            <SwiperSlide key={element.id}>
-              <CollectionCard {...element} />
-            </SwiperSlide>
-          ))}
+          {slides.length <= 0
+            ? [1, 2, 3, 4].map((item) => (
+                <SwiperSlide key={item}>
+                  <LazyCollectionItem />
+                </SwiperSlide>
+              ))
+            : slides.map((element) => (
+                <SwiperSlide key={element.id}>
+                  <CollectionCard {...element} />
+                </SwiperSlide>
+              ))}
         </Swiper>
       </div>
     </div>

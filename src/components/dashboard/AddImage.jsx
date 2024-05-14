@@ -10,14 +10,16 @@ export default function AddImage({ image, setImage, url, className, isEditable =
         className='flex  h-full w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg border-2 border-bg-300 bg-bg-200 bg-cover bg-center '
         style={{
           backgroundImage: `url('${image?.length > 0 ? URL.createObjectURL(image[0]) : url}')`,
-        }}>
+        }}
+      >
         {image?.length > 0 || url ? null : (
           <svg
             width='46'
             height='45'
             viewBox='0 0 46 45'
             fill='none'
-            xmlns='http://www.w3.org/2000/svg'>
+            xmlns='http://www.w3.org/2000/svg'
+          >
             <path
               d='M23 9.84375V35.1562M35.6562 22.5H10.3438'
               stroke='#CCCCCC'

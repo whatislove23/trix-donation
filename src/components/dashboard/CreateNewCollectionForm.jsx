@@ -113,7 +113,8 @@ export default function CreateNewCollectionForm({ organisationId }) {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder='Опис збору'
-                className='w-full rounded-2xl border-2  border-bg-300 px-4 py-3 font-medium  text-text-100 placeholder:text-xl placeholder:font-medium '></textarea>
+                className='w-full rounded-2xl border-2  border-bg-300 px-4 py-3 font-medium  text-text-100 placeholder:text-xl placeholder:font-medium '
+              ></textarea>
               <Input
                 type={'number'}
                 placeholder={'Мета збору ₴'}
@@ -170,7 +171,8 @@ export default function CreateNewCollectionForm({ organisationId }) {
             height='45'
             viewBox='0 0 46 45'
             fill='none'
-            xmlns='http://www.w3.org/2000/svg'>
+            xmlns='http://www.w3.org/2000/svg'
+          >
             <path
               d='M23 9.84375V35.1562M35.6562 22.5H10.3438'
               stroke='#CCCCCC'

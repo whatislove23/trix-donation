@@ -82,10 +82,9 @@ export default function Follows() {
       </div>
       <div>
         <Title>Організації та волонтери</Title>
-
         {organistionFollows?.length > 0 ? (
           <div>
-            <div className='mt-5 grid w-full  grid-cols-1  gap-4  min-[400px]:grid-cols-2 sm:grid sm:grid-rows-2  md:mt-9 md:grid-cols-3'>
+            <div className='mt-5 grid w-full  grid-cols-1  gap-4  min-[400px]:grid-cols-2 sm:grid   md:mt-9 md:grid-cols-3'>
               {organistionFollows?.map((organisation) => (
                 <OrganisationCard key={organisation?.organization_id} {...organisation} />
               ))}

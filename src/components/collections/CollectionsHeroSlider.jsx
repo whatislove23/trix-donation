@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { useEffect, useState } from 'react';
 
 import CollectionSliderItem from './CollectionSliderItem';
+import LazyHeroSlider from '../lazy/LazyHeroSlider';
 
 export default function CollectionsHeroSlider() {
   const [slides, setSlides] = useState([]);
@@ -42,12 +43,19 @@ export default function CollectionsHeroSlider() {
         clickable: true,
         dynamicBullets: true,
       }}
-      modules={[Autoplay, Pagination]}>
-      {slides.map((data) => (
-        <SwiperSlide key={data.id} className='w-full'>
-          <CollectionSliderItem {...data} />
+      modules={[Autoplay, Pagination]}
+    >
+      {slides.length <= 0 ? (
+        <SwiperSlide>
+          <LazyHeroSlider />
         </SwiperSlide>
-      ))}
+      ) : (
+        slides.map((data) => (
+          <SwiperSlide key={data.id} className='w-full'>
+            <CollectionSliderItem {...data} />
+          </SwiperSlide>
+        ))
+      )}
     </Swiper>
   );
 }

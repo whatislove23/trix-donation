@@ -3,15 +3,19 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://whatislove23.github.io/trix-donation",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "format": "npx prettier --write 'src/**/*.js' 'src/**/*.jsx'",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@ramonak/react-progress-bar": "^5.2.0",
+    "gh-pages": "^6.1.1",
     "react": "^18.2.0",
     "react-animated-numbers": "^0.18.0",
     "react-code-input": "^3.10.1",
@@ -24,7 +28,6 @@
     "react-select": "^5.8.0",
     "react-toastify": "^10.0.5",
     "swiper": "^11.1.1",
-    "use-breakpoint": "^4.0.1",
     "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {

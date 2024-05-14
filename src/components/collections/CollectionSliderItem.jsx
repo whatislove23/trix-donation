@@ -20,7 +20,8 @@ export default function CollectionSliderItem(props) {
   return (
     <div
       className='h-full w-full bg-cover bg-center backdrop-blur-sm   '
-      style={{ backgroundImage: `url('${preview}')` }}>
+      style={{ backgroundImage: `url('${preview}')` }}
+    >
       <div className='flex h-full w-full flex-col items-center justify-center bg-black bg-opacity-50 p-4 backdrop-blur-sm'>
         <div className='mx-auto w-full max-w-screen-xl'>
           <div className='felx flex-col gap-2'>

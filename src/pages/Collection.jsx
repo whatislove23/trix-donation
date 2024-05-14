@@ -137,7 +137,7 @@ export default function Collection() {
   useEffect(() => {
     fetchCollection(id);
     fetchReports(id);
-    fetchIsSubscribed();
+    fetchIsSubscribed(id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
@@ -148,8 +148,7 @@ export default function Collection() {
         <div className=' rounded-2xl p-5 lg:flex  lg:items-center lg:gap-9 lg:border-2 lg:border-bg-300'>
           <div
             className='logo-bg relative h-64  w-full overflow-hidden  rounded-xl   bg-cover bg-center  bg-no-repeat sm:h-96 lg:h-[583px] lg:w-[600px]'
-            style={{ backgroundImage: `url('${data?.preview}')` }}
-          >
+            style={{ backgroundImage: `url('${data?.preview}')` }}>
             <div className='absolute right-4 top-4  rounded-full  bg-white p-1 shadow-lg'>
               {profile.access_token ? (
                 subscribed ? (
@@ -162,8 +161,7 @@ export default function Collection() {
                     viewBox='0 0 512 512'
                     height='30px'
                     width='30px'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
+                    xmlns='http://www.w3.org/2000/svg'>
                     <path d='M417.84 448a16 16 0 0 1-11.35-4.72l-365.84-368a16 16 0 1 1 22.7-22.56l365.83 368A16 16 0 0 1 417.84 448zM364.92 80c-44.09 0-74.61 24.82-92.39 45.5a6 6 0 0 1-9.06 0C245.69 104.82 215.16 80 171.08 80a107.71 107.71 0 0 0-31 4.54l269.13 270.7c3-3.44 5.7-6.64 8.14-9.6 40-48.75 59.15-98.79 58.61-153C475.37 130.53 425.54 80 364.92 80zM69 149.15a115.06 115.06 0 0 0-9 43.49c-.54 54.21 18.63 104.25 58.61 153 18.77 22.87 52.8 59.45 131.39 112.8a31.88 31.88 0 0 0 36 0c20.35-13.82 37.7-26.5 52.58-38.12z'></path>
                   </svg>
                 ) : (
@@ -176,8 +174,7 @@ export default function Collection() {
                     viewBox='0 0 512 512'
                     height='30px'
                     width='30px'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
+                    xmlns='http://www.w3.org/2000/svg'>
                     <path d='M352 56h-1c-39.7 0-74.8 21-95 52-20.2-31-55.3-52-95-52h-1c-61.9.6-112 50.9-112 113 0 37 16.2 89.5 47.8 132.7C156 384 256 456 256 456s100-72 160.2-154.3C447.8 258.5 464 206 464 169c0-62.1-50.1-112.4-112-113z'></path>
                   </svg>
                 )
@@ -191,8 +188,7 @@ export default function Collection() {
               <p className=' text-text-100'>Організатор: </p>
               <Link
                 className='text-text-200 underline'
-                to={`/organisation/${data?.organizations[0]?.organization_id}`}
-              >
+                to={`/organisation/${data?.organizations[0]?.organization_id}`}>
                 {data?.organizations[0]?.name}
               </Link>
             </div>
@@ -274,9 +270,13 @@ export default function Collection() {
             <PostForm collection_id={id} setData={setReports} />
           )}
           <div className='mt-9 flex flex-col gap-9'>
-            {reports.map((item, index) => (
-              <Post key={Date.now() + index} {...item} /> //
-            ))}
+            {reports.length <= 0 ? (
+              <p className='mx-auto font-medium text-text-100'>Користувач поки не додав звіт</p>
+            ) : (
+              reports.map((item, index) => (
+                <Post key={Date.now() + index} {...item} /> //
+              ))
+            )}
           </div>
         </div>
       </div>
