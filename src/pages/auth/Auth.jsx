@@ -54,15 +54,14 @@ export default function Auth() {
     <AuthTemplate>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className='flex flex-col items-center justify-center gap-5'
-      >
+        className='flex flex-col items-center justify-center gap-5'>
         <Title>Авторизація</Title>
         <Input
           placeholder={'E-mail'}
           type={'email'}
           onChange={onEmailChange}
           value={email}
-          className={'lowercase'}
+          className={'normal-case'}
         />
         <div className='flex w-full flex-col gap-1'>
           <Input

@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
+
+import AddImage from '../../components/dashboard/AddImage';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-import AddImage from '../../components/dashboard/AddImage';
-import { toast } from 'react-toastify';
 import { ProfileContext } from '../../hooks/useContext';
+import { toast } from 'react-toastify';
 
 export default function BecomeVolunterForm() {
   const { profile } = useContext(ProfileContext);
@@ -94,7 +95,7 @@ export default function BecomeVolunterForm() {
         },
       );
       const responseData = await response.json();
-      console.log(responseData);
+      // console.log(responseData);
       if (responseData.detail) {
         toast.info(responseData.detail);
       }
@@ -111,29 +112,28 @@ export default function BecomeVolunterForm() {
   async function updateForm() {
     try {
       const formData = new FormData();
-      formData.append('name', serverData.name);
-      formData.append('user_details', serverData.user_deatails);
-      formData.append('foundation', String(checked));
+      formData.append('name', orgName || serverData.name);
+      formData.append('user_details', description || serverData.description);
+      formData.append('foundation', checked || serverData.checked);
       if (image) formData.append('image', image[0]);
       if (insta) formData.append('instagram_url', insta);
       if (twiter) formData.append('twiter_url', twiter);
       if (fb) formData.append('facebook_url', fb);
       if (other) formData.append('custom_url', other);
-      if (checked) formData.append('EGRPOU_code', String(edrpo));
-      if (checked == false) formData.append('EGRPOU_code', String(false));
+      if (checked) formData.append('EGRPOU_code', edrpo);
 
       const response = await fetch(
         `${import.meta.env.VITE_API_BASE}/organizations/api/user/request/`,
         {
           method: 'PATCH',
           headers: {
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${profile.access_token}`,
           },
-          body: JSON.stringify(formData),
+          body: formData,
         },
       );
       const responseData = await response.json();
+      console.log(responseData);
       if (responseData.detail) {
         toast.success(responseData.detail);
       }
@@ -159,7 +159,7 @@ export default function BecomeVolunterForm() {
         },
       );
       const responseData = await response.json();
-      console.log(responseData);
+
       responseData.detail && toast.info(responseData.detail);
       responseData.data && setServerData(responseData.data);
     } catch (error) {
@@ -193,8 +193,7 @@ export default function BecomeVolunterForm() {
           e.preventDefault();
           onFormSbmit();
         }}
-        className='mt-5 flex w-full flex-col gap-2 lg:mt-0'
-      >
+        className='mt-5 flex w-full flex-col gap-2 lg:mt-0'>
         <div>
           <label htmlFor='pib' className='text-2xl font-semibold text-text-100'>
             ПІБ
@@ -203,7 +202,7 @@ export default function BecomeVolunterForm() {
           <Input
             id='pib'
             placeholder={serverData?.name}
-            className='lowercase'
+            className='normal-case'
             value={orgName}
             onChange={(e) => setOrgName(e.target.value)}
           />
@@ -250,8 +249,7 @@ export default function BecomeVolunterForm() {
           <label
             htmlFor='twit'
             className='text-2xl font-semibold text-text-100'
-            placeholder={serverData?.twitter_url}
-          >
+            placeholder={serverData?.twitter_url}>
             Twitter
           </label>
           <Input
@@ -278,16 +276,14 @@ export default function BecomeVolunterForm() {
             Я хочу створити організацію
           </label>
           <div
-            className={`relative h-7 w-7 cursor-pointer border-2 border-bg-400 ${checked && 'bg-accent-200'}`}
-          >
+            className={`relative h-7 w-7 cursor-pointer border-2 border-bg-400 ${checked && 'bg-accent-200'}`}>
             <svg
               className='absolute left-0 top-0'
               width='25'
               height='25'
               viewBox='0 0 40 40'
               fill='none'
-              xmlns='http://www.w3.org/2000/svg'
-            >
+              xmlns='http://www.w3.org/2000/svg'>
               <path
                 d='M22.6516 19.9998L30.0735 12.578C30.4257 12.2263 30.6238 11.7492 30.6243 11.2515C30.6247 10.7538 30.4274 10.2763 30.0758 9.92405C29.7242 9.57181 29.247 9.37368 28.7493 9.37324C28.2516 9.3728 27.7741 9.57009 27.4219 9.92171L20 17.3436L12.5781 9.92171C12.2259 9.56947 11.7482 9.37158 11.25 9.37158C10.7519 9.37158 10.2741 9.56947 9.92189 9.92171C9.56965 10.274 9.37177 10.7517 9.37177 11.2498C9.37177 11.748 9.56965 12.2257 9.92189 12.578L17.3438 19.9998L9.92189 27.4217C9.56965 27.7739 9.37177 28.2517 9.37177 28.7498C9.37177 29.248 9.56965 29.7257 9.92189 30.078C10.2741 30.4302 10.7519 30.6281 11.25 30.6281C11.7482 30.6281 12.2259 30.4302 12.5781 30.078L20 22.6561L27.4219 30.078C27.7741 30.4302 28.2519 30.6281 28.75 30.6281C29.2482 30.6281 29.7259 30.4302 30.0781 30.078C30.4304 29.7257 30.6283 29.248 30.6283 28.7498C30.6283 28.2517 30.4304 27.7739 30.0781 27.4217L22.6516 19.9998Z'
                 fill='#ffffff'
